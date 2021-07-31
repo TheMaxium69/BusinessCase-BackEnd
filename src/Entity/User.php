@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,36 +18,43 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"garagesFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"garagesFind"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"garagesFind"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"garagesFind"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"garagesFind"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"garagesFind"})
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"garagesFind"})
      */
     private $siretNumber;
 
@@ -57,11 +65,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json", nullable=true)
+     * @Groups({"garagesFind"})
      */
     private $roles = [];
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"garagesFind"})
      */
     private $createdAt;
 
