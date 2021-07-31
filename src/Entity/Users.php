@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @ORM\Id
@@ -43,7 +44,7 @@ class Users
     private $phoneNumber;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $siretNumber;
 
@@ -115,24 +116,24 @@ class Users
         return $this;
     }
 
-    public function getPhoneNumber(): ?int
+    public function getPhoneNumber(): ?float
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(int $phoneNumber): self
+    public function setPhoneNumber(float $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
 
-    public function getSiretNumber(): ?int
+    public function getSiretNumber(): ?float
     {
         return $this->siretNumber;
     }
 
-    public function setSiretNumber(int $siretNumber): self
+    public function setSiretNumber(float $siretNumber): self
     {
         $this->siretNumber = $siretNumber;
 
@@ -153,7 +154,9 @@ class Users
 
     public function getRoles(): ?array
     {
-        return $this->roles;
+        $roles = $this->roles;
+        $roles[] = "ROLE_USER";
+        return $roles;
     }
 
     public function setRoles(array $roles): self
@@ -174,4 +177,16 @@ class Users
 
         return $this;
     }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->username;
+    }
+
+    public function getSalt() { }
+
+    public function eraseCredentials() { }
+
+    public function __call($name, $arguments) { }
+
 }
