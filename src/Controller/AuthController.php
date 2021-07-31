@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +24,7 @@ class AuthController extends AbstractController
     {
         $data = $request->getContent();
 
-        $user = $serializer->deserialize($data, Users::class, 'json');
+        $user = $serializer->deserialize($data, User::class, 'json');
 
         $date = new \Datetime();
         $user->setCreatedAt($date);

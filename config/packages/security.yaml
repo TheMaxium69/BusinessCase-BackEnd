@@ -1,6 +1,6 @@
 security:
     encoders:
-        App\Entity\Users:
+        App\Entity\User:
             algorithm: bcrypt
     # https://symfony.com/doc/current/security/experimental_authenticators.html
     enable_authenticator_manager: true
@@ -9,24 +9,24 @@ security:
         users_in_memory: { memory: null }
         users_in_database:
             entity:
-                class: App\Entity\Users
+                class: App\Entity\User
                 property: username
     firewalls:
         api_token_refresh:
-            pattern: ^/api/token/refresh
+            pattern: ^/auth/token/refresh
             stateless: true
 
         login:
-            pattern: ^/api/login
+            pattern: ^/auth/token
             stateless: true
             provider: users_in_database
             json_login:
-                check_path: /api/login_check
+                check_path: /auth/token/login
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
         api:
-            pattern: ^/api
+            pattern: ^/token
             stateless: true
             provider: users_in_database
             guard:
@@ -59,6 +59,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/auth/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/auth/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
