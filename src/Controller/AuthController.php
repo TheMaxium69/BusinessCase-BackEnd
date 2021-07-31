@@ -12,6 +12,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * @Route("/auth")
+ */
 class AuthController extends AbstractController
 {
     /**
@@ -38,7 +41,7 @@ class AuthController extends AbstractController
     /**
      * @Route("/login", name="login")
      */
-    public function login(): Response { return $this->render("user/login.html.twig"); }
+    public function login(): Response { return $this->render("auth/index.html.twig"); }
 
     /**
      * @Route("/logout", name="logout")
