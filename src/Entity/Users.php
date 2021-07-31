@@ -54,7 +54,7 @@ class Users implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="json", nullable=true)
      */
     private $roles = [];
 
@@ -155,7 +155,7 @@ class Users implements UserInterface
     public function getRoles(): ?array
     {
         $roles = $this->roles;
-        $roles[] = "ROLE_USER";
+        $roles[] = "ROLE_PRO";
         return $roles;
     }
 
