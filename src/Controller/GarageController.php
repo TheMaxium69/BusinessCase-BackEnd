@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Garage;
 use App\Repository\GarageRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,12 +31,28 @@ class GarageController extends AbstractController
     }
 
     /**
-     * @Route("/test", name="garageTest")
+     * @Route("/create", name="garageCreate", methods={"POST"})
      */
-    public function test(Request $request, SerializerInterface $serializer): Response
+    public function test(Request $request, EntityManagerInterface $manager, SerializerInterface $serializer): Response
     {
+        $data = $request->getContent();
+
+        $garage = $serializer->deserialize($data, Garage::class, 'json');
+
+        $date = new \Datetime();
+        $garage->setCreatedAt($date);
+
         $user = $this->getUser();
-        
+        $garage->setUser($user);
+
+        $manager->persist($garage);
+        $manager->flush();
+
+        return $this->json($garage, 201, [], [
+            "groups"=> [
+                "garagesFind"
+            ]
+        ]);
     }
 
     /**
@@ -43,7 +60,6 @@ class GarageController extends AbstractController
      */
     public function findOne(Garage $garage): Response
     {
-
         return $this->json($garage, 201, [], [
             "groups"=> [
                 "garagesFind"

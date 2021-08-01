@@ -44,6 +44,11 @@ class Garage
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +98,18 @@ class Garage
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
