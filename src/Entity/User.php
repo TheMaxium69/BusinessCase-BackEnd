@@ -18,43 +18,43 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $siretNumber;
 
@@ -65,13 +65,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json", nullable=true)
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $roles = [];
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"garagesFind", "userFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind"})
      */
     private $createdAt;
 

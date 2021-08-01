@@ -17,25 +17,25 @@ class Garage
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"garagesFind"})
+     * @Groups({"garagesFind", "annonceFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind"})
+     * @Groups({"garagesFind", "annonceFind"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind"})
+     * @Groups({"garagesFind", "annonceFind"})
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"garagesFind"})
+     * @Groups({"garagesFind", "annonceFind"})
      */
     private $phoneNumber;
 
