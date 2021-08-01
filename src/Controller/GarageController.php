@@ -31,9 +31,21 @@ class GarageController extends AbstractController
     }
 
     /**
+     * @Route("/{id}", name="garageFindOne", requirements={"id":"\d+"})
+     */
+    public function findOne(Garage $garage): Response
+    {
+        return $this->json($garage, 201, [], [
+            "groups"=> [
+                "garagesFind"
+            ]
+        ]);
+    }
+
+    /**
      * @Route("/create", name="garageCreate", methods={"POST"})
      */
-    public function test(Request $request, EntityManagerInterface $manager, SerializerInterface $serializer): Response
+    public function create(Request $request, EntityManagerInterface $manager, SerializerInterface $serializer): Response
     {
         $data = $request->getContent();
 
@@ -56,16 +68,21 @@ class GarageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="garageFindOne")
+     * @Route("/delete/{id}", name="garageDelete", requirements={"id":"\d+"})
      */
-    public function findOne(Garage $garage): Response
+    public function delete(Garage $garage, EntityManagerInterface $manager): Response
     {
-        return $this->json($garage, 201, [], [
-            "groups"=> [
-                "garagesFind"
-            ]
-        ]);
+        $user = $this->getUser();
+        $userGarage = $garage->getUser();
+
+        if ($userGarage == $user){
+            $manager->remove($garage);
+            $manager->flush();
+            $message = "REMOVE OK";
+        }else{
+            $message = "NOT REMOVE";
+        }
+
+        return $this->json($message, 201);
     }
-
-
 }
