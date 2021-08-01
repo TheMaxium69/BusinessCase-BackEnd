@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Annonce;
 use App\Repository\AnnonceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,18 @@ class AnnonceController extends AbstractController
         $annonces = $annonceRepository->findAll();
 
         return $this->json($annonces, 201, [], [
+            "groups"=> [
+                "annonceFind"
+            ]
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="annonceFindOne", requirements={"id":"\d+"})
+     */
+    public function findOne(Annonce $annonce): Response
+    {
+        return $this->json($annonce, 201, [], [
             "groups"=> [
                 "annonceFind"
             ]
