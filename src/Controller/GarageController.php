@@ -85,4 +85,34 @@ class GarageController extends AbstractController
 
         return $this->json($message, 201);
     }
+
+    /**
+     * @Route("/edit/{id}", name="garageEdit", methods={"PUT"}, requirements={"id":"\d+"})
+     */
+    public function edit(Garage $garage, Request $request, EntityManagerInterface $manager, SerializerInterface $serializer): Response
+    {
+        $data = $request->getContent();
+        $garageEdit = $serializer->deserialize($data, Garage::class, 'json');
+
+        $user = $this->getUser();
+        $userGarage = $garage->getUser();
+
+        if ($userGarage == $user){
+
+            $garage->setName($garageEdit->getName());
+            $garage->setAdresse($garageEdit->getAdresse());
+            $garage->setPhoneNumber($garageEdit->getPhoneNumber());
+
+            $manager->persist($garage);
+            $manager->flush();
+            return $this->json($garage, 201, [], [
+                "groups"=> [
+                    "garagesFind"
+                ]
+            ]);
+        }else{
+            $message = "NOT EDIT";
+            return $this->json($message, 201);
+        }
+    }
 }
