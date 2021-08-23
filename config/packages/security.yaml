@@ -62,3 +62,4 @@ security:
         - { path: ^/auth/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/auth/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/garage/create, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/annonce/create, roles: IS_AUTHENTICATED_FULLY }

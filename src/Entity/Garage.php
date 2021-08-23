@@ -48,6 +48,7 @@ class Garage
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"garagesFind"})
      */
     private $createdAt;
 
