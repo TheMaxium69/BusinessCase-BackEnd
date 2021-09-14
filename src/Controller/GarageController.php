@@ -17,6 +17,19 @@ use Symfony\Component\Serializer\SerializerInterface;
 class GarageController extends AbstractController
 {
     /**
+     * @Route("", name="annonceIndex")
+     */
+    public function index(): Response
+    {
+        return $this->json([
+            "FindAll" => "/api/garages",
+            "FindOne" => "/api/garage/{id}",
+            "Create" => "/api/garage/create",
+            "Edit" => "/api/garage/edit"
+        ]);
+    }
+
+    /**
      * @Route("s", name="garageFindAll")
      */
     public function findAll(GarageRepository $garageRepository): Response

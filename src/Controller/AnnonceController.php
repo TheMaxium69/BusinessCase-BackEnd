@@ -17,6 +17,18 @@ use Symfony\Component\Serializer\SerializerInterface;
 class AnnonceController extends AbstractController
 {
     /**
+     * @Route("", name="annonceIndex")
+     */
+    public function index(): Response
+    {
+        return $this->json([
+            "FindAll" => "/api/annonces",
+            "FindOne" => "/api/annonce/{id}",
+            "Create" => "/api/annonce/create",
+        ]);
+    }
+
+    /**
      * @Route("s", name="annonceFindAll")
      */
     public function findAll(AnnonceRepository $annonceRepository): Response
