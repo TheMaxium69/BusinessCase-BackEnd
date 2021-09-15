@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class AuthController extends AbstractController
 {
     /**
-     * @Route("/register", name="register", methods={"POST"})
+         * @Route("/register", name="register", methods={"POST"})
      */
     public function register(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher, SerializerInterface $serializer): Response
     {

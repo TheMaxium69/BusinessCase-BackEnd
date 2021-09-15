@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class GarageController extends AbstractController
 {
     /**
-     * @Route("", name="annonceIndex")
+     * @Route("", name="garageIndex")
      */
     public function index(): Response
     {
@@ -81,7 +81,7 @@ class GarageController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="garageDelete", requirements={"id":"\d+"})
+     * @Route("/delete/{id}", name="garageDelete", methods={"DELETE"}, requirements={"id":"\d+"})
      */
     public function delete(Garage $garage, EntityManagerInterface $manager): Response
     {
