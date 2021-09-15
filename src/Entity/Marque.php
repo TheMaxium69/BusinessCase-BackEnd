@@ -18,24 +18,25 @@ class Marque
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind", "carburantFind"})
+     * @Groups({"annonceFind", "marqueFind", "modelFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"annonceFind", "carburantFind"})
+     * @Groups({"annonceFind", "marqueFind", "modelFind"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"annonceFind", "carburantFind"})
+     * @Groups({"annonceFind", "marqueFind", "modelFind"})
      */
     private $logo;
 
     /**
      * @ORM\OneToMany(targetEntity=Model::class, mappedBy="marque", orphanRemoval=true)
+     * @Groups({"marqueFind"})
      */
     private $models;
 

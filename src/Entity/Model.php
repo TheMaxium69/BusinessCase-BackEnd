@@ -17,19 +17,20 @@ class Model
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind", "carburantFind"})
+     * @Groups({"annonceFind", "marqueFind", "modelFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"annonceFind", "carburantFind"})
+     * @Groups({"annonceFind", "marqueFind", "modelFind"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Marque::class, inversedBy="models")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"modelFind"})
      */
     private $marque;
 

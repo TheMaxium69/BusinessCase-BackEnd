@@ -29,7 +29,6 @@ class Carburant
 
     /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="carburant", orphanRemoval=true)
-     * @Groups({"carburantFind"})
      */
     private $annonces;
 
