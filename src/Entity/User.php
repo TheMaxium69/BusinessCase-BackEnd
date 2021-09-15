@@ -18,43 +18,43 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $siretNumber;
 
@@ -65,13 +65,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json", nullable=true)
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $roles = [];
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"garagesFind", "userFind", "annonceFind"})
+     * @Groups({"garagesFind", "userFind", "annonceFind", "carburantFind"})
      */
     private $createdAt;
 

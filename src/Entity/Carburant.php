@@ -17,18 +17,19 @@ class Carburant
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="carburant", orphanRemoval=true)
+     * @Groups({"carburantFind"})
      */
     private $annonces;
 

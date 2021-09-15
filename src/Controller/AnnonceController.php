@@ -25,11 +25,7 @@ class AnnonceController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->json([
-            "FindAll" => "/api/annonces",
-            "FindOne" => "/api/annonce/{id}",
-            "Create" => "/api/annonce/create",
-        ]);
+        return $this->redirectToRoute("annonceFindAll");
     }
 
     /**

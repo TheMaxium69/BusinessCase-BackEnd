@@ -15,51 +15,51 @@ class Annonce
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $year;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $kilometrage;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $price;
 
     /**
      * @ORM\ManyToOne(targetEntity=Marque::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $marque;
 
     /**
      * @ORM\ManyToOne(targetEntity=Model::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $model;
 
@@ -73,14 +73,14 @@ class Annonce
     /**
      * @ORM\ManyToOne(targetEntity=Garage::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $garage;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"annonceFind"})
+     * @Groups({"annonceFind", "carburantFind"})
      */
     private $user;
 

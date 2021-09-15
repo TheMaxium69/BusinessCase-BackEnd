@@ -21,12 +21,7 @@ class GarageController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->json([
-            "FindAll" => "/api/garages",
-            "FindOne" => "/api/garage/{id}",
-            "Create" => "/api/garage/create",
-            "Edit" => "/api/garage/edit"
-        ]);
+        return $this->redirectToRoute("garageFindAll");
     }
 
     /**
